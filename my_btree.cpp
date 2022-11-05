@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include "vector"
 
@@ -13,7 +14,7 @@ template <class T>
 
 struct btree {
 private:
-    vector< treeNode<T>*> nodes ;
+    vector< treeNode<T>*> nodes;
     //requires: nothing
     // effects: returns size of a tree 
     int treeSize(treeNode<T>* root){
@@ -60,36 +61,25 @@ public:
     //requires: nothing 
     //effects:add node to the tree at highet possible level
     void addNode(T data){
-        int *n = new int;
-        *n= data;
+        int *newnode = new int;
+        *newnode=data;
         treeNode<T> *temp = new treeNode<T>;
-        *temp = &n;
-        int index=0;
-        for (int i = 0; i < nodes.size(); i++) {
+        *temp = {newnode,NULL, NULL};
+        int index;
+        for (int i = 0; i <nodes.size(); ++i) {
             if(nodes[i] == NULL){
                 index = i;
                 break;
             }
-            else {
-                index = i++;
-            }
+            else index = i+1;
         }
-        if (index < nodes.size()){
-          nodes[index] = temp;  
-        } 
-        else {
-            nodes.push_back(temp);
-        }
+        if (index < nodes.size()) nodes[index] = temp;
+        else nodes.push_back(temp);
         if (index != 0){
             int parent = parentind(index);
-            if(nodes[parent]->left != NULL) {
-                nodes[parent]->right = temp;
-            }
-            else {
-                nodes[parent]->left = temp;
-            }
+            if(nodes[parent]->left != NULL) nodes[parent]->right = temp;
+            else nodes[parent]->left = temp;
         }
-
     }
  
     //requires: nothing 
@@ -154,7 +144,6 @@ int main() {
     tree.addNode(2);
     tree.addNode(3);
     tree.addNode(9);
-    tree.inOrderPrint();
     tree.addNode(5);
     cout<<tree.treeSize()<<endl;
     cout<<endl;
