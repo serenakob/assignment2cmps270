@@ -8,9 +8,8 @@ template<class T> class Stack;
 
 //requires: two stacks as arguments
 //effects: a stack that has the elements of the two other stacks
-
 template<class T>
-Stack<T> operator+( Stack<T>& s1,  Stack<T>& s2){
+Stack<T> operator+(Stack<T>& s1, Stack<T>& s2){
     Stack<T> res = s1;
      for(int i = 0; i < s1.items.size(); ++i){
         res.items.push_back(s2.items[i]);}
