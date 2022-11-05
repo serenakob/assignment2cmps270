@@ -15,7 +15,6 @@ public:
     T size();
     Stack<T> operator+(Stack<T> stack2);
 };
-
 int main()
 {
     Stack<int> stack;
