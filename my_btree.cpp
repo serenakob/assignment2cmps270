@@ -154,6 +154,7 @@ int main() {
     tree.addNode(2);
     tree.addNode(3);
     tree.addNode(9);
+    tree.inOrderPrint();
     tree.addNode(5);
     cout<<tree.treeSize()<<endl;
     cout<<endl;
